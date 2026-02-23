@@ -93,7 +93,7 @@ export default function Services() {
               className="group cursor-pointer"
             >
               {/* Project Image Container */}
-              <div className="relative aspect-video rounded-3xl overflow-hidden bg-[#111] mb-6 border border-white/5 transition-colors group-hover:border-white/20">
+              <div className="relative aspect-video rounded-3xl overflow-hidden bg-[#3d00c0] mb-6 border border-white/5 transition-colors group-hover:border-pink-200">
                 <img 
                   src={project.image} 
                   alt={project.title} 
