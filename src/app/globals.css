@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050505;
+  --foreground: #ffffff;
+}
+
+/* Base resets */
+* {
+  box-sizing: border-box;
+}
+body {
+    position: relative;
+  width: 100%;
+  /* overflow-x: hidden ko sirf body par rakhein, html par nahi */
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+}
+main {
+  width: 100%;
+ /* Ye ensure karega ki orange strips bahar na niklein */
+}
+html, body {
+  width: 100%;
+  /* overflow-x: hidden ko sirf body par rakhein, html par nahi */
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Navbar ya fixed elements ke liye safety */
+header, nav {
+  max-width: 100vw;
+  left: 0;
+  right: 0;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
