@@ -7,19 +7,19 @@ const detailedServices = [
     {
         title: "Custom Website Design",
         desc: "We design high-converting, visually striking websites tailored to your brand. Every layout is strategically crafted to build trust.",
-        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800",
+        image: "./brand.png",
         tags: ["Landing Pages", "Business Websites", "UI/UX Strategy"],
     },
     {
-        title: "UI/UX Strategy",
+        title: "UI/UX Design",
         desc: "We create user-first digital experiences that are intuitive, scalable, and built for growth.",
-        image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&q=80&w=800",
+        image: "./UX.png",
         tags: ["Wireframing", "Design Systems", "Prototyping"],
     },
     {
         title: "Website Development",
         desc: "We develop fast, scalable, and SEO-ready websites using modern frameworks.",
-        image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800",
+        image: "./im-1.png",
         tags: ["Next.js", "Speed Optimization", "SEO Structure"],
     }
 ];
@@ -100,7 +100,7 @@ function SingleCard({ service, index, total, progress, isDesktop }: { service: a
                 top: isDesktop ? `${index * 30}px` : 'auto', 
                 position: isDesktop ? 'absolute' : 'relative'
             }}
-            className="w-full rounded-[24px] md:rounded-[40px] border border-black/5 flex flex-col md:flex-row bg-white shadow-xl md:shadow-2xl overflow-hidden min-h-fit md:h-[480px]"
+            className="w-full rounded-[24px] md:rounded-[40px] border border-gray-600 flex flex-col md:flex-row bg-white shadow-xl md:shadow-2xl overflow-hidden min-h-fit md:h-[480px]"
         >
             <div className="w-full md:w-[45%] p-4 md:p-8 shrink-0 flex items-center">
                 <div className="relative w-full aspect-video md:aspect-square rounded-[20px] overflow-hidden bg-[#f9f9f9]">
@@ -109,8 +109,8 @@ function SingleCard({ service, index, total, progress, isDesktop }: { service: a
             </div>
 
             <div className="w-full md:w-[55%] flex flex-col justify-center gap-4 md:gap-6 p-6 md:p-12 text-left">
-                <h3 className="text-2xl md:text-5xl font-bold tracking-tighter text-[#1a1a1a]">{service.title}</h3>
-                <p className="text-[#555] text-sm md:text-xl leading-relaxed font-medium">{service.desc}</p>
+                <h3 className="text-2xl md:text-5xl font-medium tracking-tighter text-[#1a1a1a]">{service.title}</h3>
+                <p className="text-[#555] text-sm md:text-xl leading-relaxed font-sans">{service.desc}</p>
                 
                 <div className="grid grid-cols-2 gap-3 mt-4 pt-6 border-t border-gray-100">
                     {service.tags.map((tag: string) => (

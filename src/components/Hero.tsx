@@ -18,7 +18,7 @@ export default function Hero() {
         </span>
 
         <h1 className="mt-8 text-6xl md:text-[90px] font-bold tracking-tighter leading-[0.95] text-white max-w-4xl">
-          Scale your brand <br />
+          Scale your website <br />
           <span className="text-gray-500">with unlimited design.</span>
         </h1>
 
