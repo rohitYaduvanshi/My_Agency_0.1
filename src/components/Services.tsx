@@ -28,7 +28,7 @@ const pinnedProjects = [
     title: "Auditra AI",
     desc: "AI-driven smart contract auditing.",
     image: "./auditra.png",
-    stack: ["Next.js", "Python", "Framer"],
+    stack: ["Next.js", "Python", "React"],
     liveLink: "#",
     gitLink: "https://github.com/rohitYaduvanshi",
     status: "IN PROGRESS"
@@ -37,7 +37,7 @@ const pinnedProjects = [
     title: "Coders' Club",
     desc: "Developer community platform.",
     image: "./coder.png",
-    stack: ["React", "Sepolia", "CSS"],
+    stack: ["HTML", "JS", "CSS"],
     liveLink: "https://codersclub-bbit.netlify.app/",
     gitLink: "https://github.com/rohitYaduvanshi",
     status: "LIVE"
@@ -55,8 +55,8 @@ const pinnedProjects = [
     title: "Indus AI",
     desc: "SIH Project",
     image: "./doj.png",
-    stack: ["React", "Sepolia", "CSS"],
-    liveLink: "https://codersclub-bbit.netlify.app/",
+    stack: ["HTML", "JS", "CSS"],
+    liveLink: "https://indusai.netlify.app/",
     gitLink: "https://github.com/rohitYaduvanshi",
     status: "LIVE"
   }
