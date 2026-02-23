@@ -211,9 +211,9 @@ export default function Pricing() {
 function RollingButton({ isDark }: { isDark: boolean }) {
 
   const handleScroll = () => {
-    const footer = document.getElementById("footer");
-    if (footer) {
-      footer.scrollIntoView({ behavior: "smooth" });
+    const services = document.getElementById("services");
+    if (services) {
+      services.scrollIntoView({ behavior: "smooth" });
     }
   };
 

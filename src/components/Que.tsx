@@ -47,7 +47,7 @@ export default function Faq() {
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="w-full p-6 md:p-8 flex justify-between items-center text-left group"
                 >
-                  <span className="text-[10%] md:text-2xl font-medium text-gray-800 tracking-tight">
+                  <span className="text-[1em] md:text-xl font-medium text-gray-800">
                     {faq.question}
                   </span>
                   
@@ -72,7 +72,7 @@ export default function Faq() {
                         <div className="w-full h-[1px] bg-gray-100 mb-6" />
                         
                         {/* Answer Text Styling */}
-                        <p className="text-gray-500 text-lg leading-relaxed font-medium">
+                        <p className="text-gray-500 text-[0.9em] leading-relaxed font-medium">
                           {faq.answer}
                         </p>
                       </div>
