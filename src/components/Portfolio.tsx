@@ -1,12 +1,26 @@
 "use client";
 import { motion } from "framer-motion";
+// Tech Icons import kar rahe hain
+import { 
+  SiNextdotjs, SiReact, SiTypescript, SiPostgresql, 
+  SiPython, SiPandas, SiNumpy, SiTailwindcss, SiFramer 
+} from "react-icons/si";
 
-const items = ["Brand Design", "Logo Design", "Website Design", "UI/UX Experience", "10 + Clients"];
+const techStack = [
+  { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
+  { name: "React", icon: <SiReact className="text-[#61DAFB]" /> },
+  { name: "TypeScript", icon: <SiTypescript className="text-[#3178C6]" /> },
+  { name: "PostgreSQL", icon: <SiPostgresql className="text-[#4169E1]" /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06B6D4]" /> },
+  { name: "Framer Motion", icon: <SiFramer className="text-white" /> },
+  { name: "Python", icon: <SiPython className="text-[#3776AB]" /> },
+  { name: "Pandas", icon: <SiPandas className="text-white" /> },
+  { name: "NumPy", icon: <SiNumpy className="text-[#013243]" /> },
+];
 
 export default function Portfolio() {
   return (
     <div className="relative">
-      {/* SECTION 1: Portfolio (Dark Content) */}
       <section className="relative py-32 px-6 overflow-visible z-10 [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]">
         
         {/* Dynamic Amber/Orange Glow */}
@@ -27,37 +41,39 @@ export default function Portfolio() {
             </p>
           </div>
 
-          {/* Running Logo Bar - Infinite Scroll */}
-          <div className="mb-20 overflow-hidden relative w-full">
+          {/* Running Tech Bar - Infinite Scroll */}
+          <div className="mb-20 overflow-hidden relative w-full  py-8">
             <motion.div
               animate={{ x: ["0%", "-50%"] }}
               transition={{
-                duration: 25,
+                duration: 20,
                 repeat: Infinity,
                 ease: "linear"
               }}
               className="flex whitespace-nowrap gap-16 md:gap-24 items-center w-max"
             >
+              {/* Do baar map kar rahe hain infinite loop ke liye */}
               {[...Array(2)].map((_, i) => (
-                <div key={i} className="flex gap-16 md:gap-24 items-center opacity-30 grayscale hover:opacity-50 transition-opacity">
-                  <span className="text-xl font-bold tracking-tighter text-white flex items-center gap-3">
-                    <div className="w-5 h-5 bg-white/20 rounded-sm rotate-45" /> Logoipsum
-                  </span>
-                  <span className="text-xl font-bold tracking-tighter text-white flex items-center gap-3">
-                    <div className="w-5 h-5 bg-white/20 rounded-full" /> Logoipsum
-                  </span>
-                  <span className="text-xl font-bold tracking-tighter text-white flex items-center gap-3">
-                    <div className="w-5 h-5 bg-white/20 rounded-sm" /> Logoipsum
-                  </span>
-                  <span className="text-xl font-bold tracking-tighter text-white flex items-center gap-3">
-                    <div className="w-5 h-5 bg-white/20 rounded-full" /> Logoipsum
-                  </span>
+                <div key={i} className="flex gap-16 md:gap-24 items-center">
+                  {techStack.map((tech, index) => (
+                    <div 
+                      key={index} 
+                      className="flex items-center gap-3 opacity-40 hover:opacity-100 transition-all duration-300 group cursor-default"
+                    >
+                      <span className="text-2xl group-hover:scale-110 transition-transform">
+                        {tech.icon}
+                      </span>
+                      <span className="text-xl text-white uppercase">
+                        {tech.name}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               ))}
             </motion.div>
           </div>
 
-          {/* Premium Video Frame with Amber Border Shadow */}
+          {/* Premium Video Frame */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -78,8 +94,6 @@ export default function Portfolio() {
           </motion.div>
         </div>
       </section>
-
-
     </div>
   );
 }
