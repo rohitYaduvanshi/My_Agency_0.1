@@ -8,31 +8,36 @@ const detailedServices = [
         title: "Custom Website Design",
         desc: "We design high-converting, visually striking websites tailored to your brand. Every layout is strategically crafted to build trust.",
         image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800",
-        tags: ["Landing Pages", "Business Websites", "E-commerce Design", "Responsive Design", "Conversion Focused", "UI/UX Strategy"],
+        tags: ["Landing Pages", "Business Websites", "UI/UX Strategy"],
     },
     {
         title: "UI/UX Strategy",
-        desc: "We create user-first digital experiences that are intuitive, scalable, and built for growth. From wireframes to high-fidelity designs.",
+        desc: "We create user-first digital experiences that are intuitive, scalable, and built for growth.",
         image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&q=80&w=800",
-        tags: ["Wireframing", "User Journey Mapping", "Design Systems", "Prototyping", "Usability Optimization", "Interaction Design"],
+        tags: ["Wireframing", "Design Systems", "Prototyping"],
     },
     {
         title: "Website Development",
-        desc: "We develop fast, scalable, and SEO-ready websites using modern frameworks. Every build is optimized for performance.",
+        desc: "We develop fast, scalable, and SEO-ready websites using modern frameworks.",
         image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800",
-        tags: ["Next.js Development", "WordPress Development", "CMS Integration", "Speed Optimization", "SEO Structure", "Domain & Hosting Setup"],
+        tags: ["Next.js", "Speed Optimization", "SEO Structure"],
     }
 ];
 
 export default function Details() {
     const containerRef = useRef<HTMLElement>(null);
-    const [isMobile, setIsMobile] = useState(false);
+    const [isDesktop, setIsDesktop] = useState(false);
 
     useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile();
-        window.addEventListener("resize", checkMobile);
-        return () => window.removeEventListener("resize", checkMobile);
+        const handleResize = () => {
+            // Strict Check: Sirf 1024px se badi screens (Laptops/Monitors) par hi effect chalega
+            // Isse phone ka 'Desktop View' (jo aksar 980px emulate karta hai) bypass ho jayega
+            setIsDesktop(window.innerWidth >= 1024);
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     const { scrollYProgress } = useScroll({
@@ -46,33 +51,31 @@ export default function Details() {
     return (
         <section 
             ref={containerRef} 
-            /* h-[300vh] desktop par scroll depth dega aur mobile par auto height */
-            className={`bg-[#fffdd1] relative ${isMobile ? 'h-auto py-20' : 'h-[350vh]'} z-10`}
+            className={`bg-[#fffdd1] relative ${isDesktop ? 'h-[350vh]' : 'h-auto py-20'} z-10`}
         >
-            <div className={`${isMobile ? 'relative' : 'sticky top-0 h-screen'} flex flex-col items-center overflow-hidden px-4 md:px-6`}>
+            <div className={`${isDesktop ? 'sticky top-0 h-screen' : 'relative'} flex flex-col items-center overflow-hidden px-4 md:px-6`}>
 
                 <motion.div
                     style={{
-                        opacity: isMobile ? 1 : headerOpacity,
-                        y: isMobile ? 0 : headerY
+                        opacity: isDesktop ? headerOpacity : 1,
+                        y: isDesktop ? headerY : 0
                     }}
-                    className={`${isMobile ? 'relative mb-12' : 'absolute top-12'} text-center z-[100] w-full max-w-4xl`}
+                    className={`${isDesktop ? 'absolute top-12' : 'relative mb-12'} text-center z-[100] w-full max-w-4xl`}
                 >
                     <h2 className="text-3xl md:text-6xl font-medium tracking-tight text-black leading-tight">
-                        We help brands show up..! <br />
+                        We help brands show up..!
                     </h2>
                 </motion.div>
 
-                {/* Container ki height mobile par h-auto rakhi hai taaki cards stack na hon */}
-                <div className={`relative w-full max-w-5xl ${isMobile ? 'flex flex-col gap-10' : 'h-[600px] mt-40 flex items-center justify-center'}`}>
+                <div className={`relative w-full max-w-5xl ${isDesktop ? 'h-[600px] mt-40 flex items-center justify-center' : 'flex flex-col gap-10'}`}>
                     {detailedServices.map((service, index) => (
                         <SingleCard
-                            key={service.title}
+                            key={index}
                             service={service}
                             index={index}
                             total={detailedServices.length}
                             progress={scrollYProgress}
-                            isMobile={isMobile}
+                            isDesktop={isDesktop}
                         />
                     ))}
                 </div>
@@ -81,24 +84,22 @@ export default function Details() {
     );
 }
 
-function SingleCard({ service, index, total, progress, isMobile }: { service: any, index: number, total: number, progress: MotionValue<number>, isMobile: boolean }) {
+function SingleCard({ service, index, total, progress, isDesktop }: { service: any, index: number, total: number, progress: MotionValue<number>, isDesktop: boolean }) {
     const start = index / total;
-
-    // Animation values desktop ke liye hamesha calculated rahengi to avoid Hook error
+    
+    // Inhe hamesha declare rakhein taaki Hooks order maintain rahe
     const yAnim = useTransform(progress, [0, start, start + 0.1], [1000, 0, 0]);
     const scaleAnim = useTransform(progress, [start, 1], [1, 1 - (total - index) * 0.04]);
 
     return (
         <motion.div
             style={{
-                y: isMobile ? 0 : (index === 0 ? 0 : yAnim),
-                scale: isMobile ? 1 : scaleAnim,
+                y: isDesktop ? (index === 0 ? 0 : yAnim) : 0,
+                scale: isDesktop ? scaleAnim : 1,
                 zIndex: index + 1,
-                /* Mobile par 'relative' aur auto top, Desktop par 'absolute' aur stacked top */
-                top: isMobile ? 'auto' : `${index * 30}px`, 
-                position: isMobile ? 'relative' : 'absolute'
+                top: isDesktop ? `${index * 30}px` : 'auto', 
+                position: isDesktop ? 'absolute' : 'relative'
             }}
-            /* Desktop par fixed height md:h-[480px] taki stack barabar dikhe */
             className="w-full rounded-[24px] md:rounded-[40px] border border-black/5 flex flex-col md:flex-row bg-white shadow-xl md:shadow-2xl overflow-hidden min-h-fit md:h-[480px]"
         >
             <div className="w-full md:w-[45%] p-4 md:p-8 shrink-0 flex items-center">
