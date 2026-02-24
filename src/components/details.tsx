@@ -63,7 +63,7 @@ export default function Details() {
                     className={`${isDesktop ? 'absolute top-12' : 'relative mb-12'} text-center z-[100] w-full max-w-4xl`}
                 >
                     <h2 className="text-3xl md:text-6xl font-medium tracking-tight text-black leading-tight">
-                        We help brands show up..!
+                        We help brands grow up..!
                     </h2>
                 </motion.div>
 
