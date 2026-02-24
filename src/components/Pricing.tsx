@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import Link from 'next/link';
 
 const plans = [
   {
@@ -68,21 +69,18 @@ export default function Pricing() {
             return (
               <div
                 key={plan.name}
-                className={`rounded-[32px] border border-gray-200/60 p-2 shadow-sm ${
-                  plan.isDark ? "bg-[#0a0a0a]" : "bg-white"
-                }`}
+                className={`rounded-[32px] border border-gray-200/60 p-2 shadow-sm ${plan.isDark ? "bg-[#0a0a0a]" : "bg-white"
+                  }`}
               >
                 <div
-                  className={`w-full h-full rounded-[26px] p-10 relative overflow-hidden flex flex-col ${
-                    plan.isDark
+                  className={`w-full h-full rounded-[26px] p-10 relative overflow-hidden flex flex-col ${plan.isDark
                       ? "bg-[#0a0a0a] border border-white/10"
                       : "bg-[#fcfcfc] border border-gray-100"
-                  }`}
+                    }`}
                 >
                   <div
-                    className={`absolute inset-0 opacity-[0.4] ${
-                      plan.isDark ? "invert" : ""
-                    }`}
+                    className={`absolute inset-0 opacity-[0.4] ${plan.isDark ? "invert" : ""
+                      }`}
                     style={{
                       backgroundImage:
                         "radial-gradient(#d1d5db 1px, transparent 1px)",
@@ -94,11 +92,10 @@ export default function Pricing() {
                     {/* Top Row */}
                     <div className="flex justify-between items-center mb-8">
                       <span
-                        className={`px-3 py-1 rounded-md text-[10px] font-bold uppercase border ${
-                          plan.isDark
+                        className={`px-3 py-1 rounded-md text-[10px] font-bold uppercase border ${plan.isDark
                             ? "bg-white/10 text-white border-white/20"
                             : "bg-gray-100 text-gray-400 border-gray-200"
-                        }`}
+                          }`}
                       >
                         {plan.name}
                       </span>
@@ -116,9 +113,8 @@ export default function Pricing() {
                     {/* Price */}
                     <div className="mb-10">
                       <h3
-                        className={`text-5xl font-bold tracking-tighter ${
-                          plan.isDark ? "text-white" : "text-black"
-                        }`}
+                        className={`text-5xl font-bold tracking-tighter ${plan.isDark ? "text-white" : "text-black"
+                          }`}
                       >
                         ₹{currentPrice.toLocaleString("en-IN")}
                         <span className="text-lg font-medium text-gray-400">
@@ -128,9 +124,8 @@ export default function Pricing() {
                       </h3>
 
                       <div
-                        className={`w-full h-px mt-8 ${
-                          plan.isDark ? "bg-white/10" : "bg-gray-200"
-                        } border-dashed border-t-2`}
+                        className={`w-full h-px mt-8 ${plan.isDark ? "bg-white/10" : "bg-gray-200"
+                          } border-dashed border-t-2`}
                       />
                     </div>
 
@@ -145,11 +140,10 @@ export default function Pricing() {
                             />
                           </div>
                           <span
-                            className={`text-[15px] font-medium ${
-                              plan.isDark
+                            className={`text-[15px] font-medium ${plan.isDark
                                 ? "text-white"
                                 : "text-gray-700"
-                            }`}
+                              }`}
                           >
                             {f}
                           </span>
@@ -168,21 +162,19 @@ export default function Pricing() {
                         }
                       >
                         <span
-                          className={`text-xs font-bold ${
-                            plan.isDark
+                          className={`text-xs font-bold ${plan.isDark
                               ? "text-white"
                               : "text-gray-800"
-                          }`}
+                            }`}
                         >
                           {plan.toggleLabel}
                         </span>
 
                         <div
-                          className={`w-11 h-6 rounded-full p-1 transition-colors ${
-                            isExtra
+                          className={`w-11 h-6 rounded-full p-1 transition-colors ${isExtra
                               ? "bg-[#f25e24]"
                               : "bg-gray-200"
-                          }`}
+                            }`}
                         >
                           <motion.div
                             animate={{ x: isExtra ? 20 : 0 }}
@@ -221,21 +213,34 @@ function RollingButton({ isDark }: { isDark: boolean }) {
     <motion.button
       whileTap={{ scale: 0.98 }}
       onClick={handleScroll}
-      className={`group relative w-full h-[54px] rounded-xl text-sm font-medium overflow-hidden border transition-all duration-500 ${
-        isDark
+      className={`group relative w-full h-[54px] rounded-xl text-sm font-medium overflow-hidden border transition-all duration-500 ${isDark
           ? "bg-[#f25e24] border-[#f25e24] text-white"
           : "bg-white border-[#f25e24] text-[#f25e24]"
-      }`}
+        }`}
     >
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
-        <span className="inline-block transition-transform duration-500 ease-[0.76,0,0.24,1] group-hover:-translate-y-[360%]">
-          Start scaling
-        </span>
+      <Link
+        href="https://polar.sh/checkout/polar_c_3ODYAe4ahqxghxxmyfqzJUh iRKz0AFHlhKjth2zf4gd" // Aapka Polar link
+        target="_blank"
+        className="group relative h-[60px] w-full rounded-2xl overflow-hidden flex items-center justify-center cursor-pointer shadow-lg shadow-orange-500/20"
+      >
+        {/* Text Animation Container */}
+        <div className="relative z-10 w-full h-full flex flex-col items-center justify-center font-medium text-black uppercase text-sm">
 
-        <span className="absolute inline-block transition-transform duration-500 ease-[0.76,0,0.24,1] translate-y-[160%] group-hover:translate-y-0">
-          Start scaling
-        </span>
-      </div>
+          {/* Upper Span - Jo normal dikhta hai */}
+          <span className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[0.76,0,0.24,1] group-hover:-translate-y-full">
+            START SCALING
+          </span>
+
+          {/* Lower Span - Jo hover par niche se upar aata hai */}
+          <span className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[0.76,0,0.24,1] translate-y-full group-hover:translate-y-0">
+            START SCALING
+          </span>
+
+        </div>
+
+        {/* Background Hover Shine Effect */}
+        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </Link>
 
       {!isDark && (
         <div className="absolute inset-0 bg-[#f25e24]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
