@@ -36,6 +36,15 @@ const pinnedProjects = [
   {
     title: "Coders' Club",
     desc: "Developer community platform.",
+    image: "./adm.png",
+    stack: ["HTML", "JS", "CSS"],
+    liveLink: "https://codersclub-bbit.netlify.app/",
+    gitLink: "https://github.com/rohitYaduvanshi",
+    status: "LIVE"
+  },
+  {
+    title: "Coders' Club",
+    desc: "Developer community platform.",
     image: "./coder.png",
     stack: ["HTML", "JS", "CSS"],
     liveLink: "https://codersclub-bbit.netlify.app/",

@@ -26,10 +26,17 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Obizax | Digital Agency",
+  title: "Obizax | Agency",
   description: "High-end design and development for startups",
+  icons: {
+    icon: [
+      {
+        url: "/icon.svg", // Agar aapne rename karke src/app/icon.svg rakha hai
+        type: "image/svg+xml",
+      },
+    ],
+  },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
