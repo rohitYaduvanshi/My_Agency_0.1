@@ -7,7 +7,7 @@ import Link from 'next/link';
 const plans = [
   {
     name: "Basic",
-    basePrice: 1000,
+    basePrice: 8000,
     extraPrice: 1000,
     features: [
       "1 active task at a time",
@@ -21,7 +21,7 @@ const plans = [
   },
   {
     name: "Pro",
-    basePrice: 2995,
+    basePrice: 10000,
     extraPrice: 1600,
     features: [
       "2 active task at a time",
@@ -113,7 +113,7 @@ export default function Pricing() {
                     {/* Price */}
                     <div className="mb-10">
                       <h3
-                        className={`text-5xl font-bold tracking-tighter ${plan.isDark ? "text-white" : "text-black"
+                        className={`text-5xl font-bold ${plan.isDark ? "text-white" : "text-black"
                           }`}
                       >
                         ₹{currentPrice.toLocaleString("en-IN")}
@@ -197,54 +197,43 @@ export default function Pricing() {
 }
 
 /* ========================= */
-/* BUTTON COMPONENT */
+/* UPDATED BUTTON COMPONENT */
 /* ========================= */
-
 function RollingButton({ isDark }: { isDark: boolean }) {
-
-  const handleScroll = () => {
-    const services = document.getElementById("services");
-    if (services) {
-      services.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const POLAR_LINK = "https://buy.polar.sh/polar_cl_ybXbdAUwFZUESRDZ0FrnYnSC5fSRkaCnPQ1tY1XHRsy";
 
   return (
-    <motion.button
-      whileTap={{ scale: 0.98 }}
-      onClick={handleScroll}
-      className={`group relative w-full h-[54px] rounded-xl text-sm font-medium overflow-hidden border transition-all duration-500 ${isDark
-          ? "bg-[#f25e24] border-[#f25e24] text-white"
-          : "bg-white border-[#f25e24] text-[#f25e24]"
-        }`}
+    <a 
+      href={POLAR_LINK}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block w-full"
     >
-      <Link
-        href="https://polar.sh/checkout/polar_c_3ODYAe4ahqxghxxmyfqzJUh iRKz0AFHlhKjth2zf4gd" // Aapka Polar link
-        target="_blank"
-        className="group relative h-[60px] w-full rounded-2xl overflow-hidden flex items-center justify-center cursor-pointer shadow-lg shadow-orange-500/20"
+      <motion.div
+        whileTap={{ scale: 0.98 }}
+        className={`group relative w-full h-[58px] rounded-xl text-sm font-bold overflow-hidden border transition-all duration-500 flex items-center justify-center cursor-pointer ${
+          isDark
+            ? "bg-[#f25e24] border-[#f25e24] text-white shadow-lg shadow-orange-500/20"
+            : "bg-white border-[#f25e24] text-[#f25e24]"
+        }`}
       >
-        {/* Text Animation Container */}
-        <div className="relative z-10 w-full h-full flex flex-col items-center justify-center font-medium text-black uppercase text-sm">
-
-          {/* Upper Span - Jo normal dikhta hai */}
+        <div className="relative z-10 w-full h-full flex flex-col items-center justify-center uppercase tracking-tighter">
+          {/* Upper Span */}
           <span className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[0.76,0,0.24,1] group-hover:-translate-y-full">
             START SCALING
           </span>
 
-          {/* Lower Span - Jo hover par niche se upar aata hai */}
+          {/* Lower Span */}
           <span className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[0.76,0,0.24,1] translate-y-full group-hover:translate-y-0">
             START SCALING
           </span>
-
         </div>
 
-        {/* Background Hover Shine Effect */}
-        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </Link>
-
-      {!isDark && (
-        <div className="absolute inset-0 bg-[#f25e24]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-      )}
-    </motion.button>
+        {/* Hover Effect */}
+        <div className={`absolute inset-0 transition-transform duration-500 ${
+          isDark ? "bg-white/10" : "bg-[#f25e24]/5"
+        } translate-y-full group-hover:translate-y-0`} />
+      </motion.div>
+    </a>
   );
 }
